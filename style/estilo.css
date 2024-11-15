@@ -1,0 +1,290 @@
+* {
+    margin: 0;
+}
+
+h1, h2{
+    font-family: Roboto;
+}
+
+p{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/*menu de navegacion*/
+header {
+    background-color: aliceblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo-header img {
+    max-width: 100px;
+}
+
+.menu-header ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.menu-header li {
+    margin: 0 10px;
+}
+
+.menu-header a {
+    text-decoration: none;
+    color: #333;
+}
+
+.menu-header a:hover{
+    color: red;
+}
+
+/*Seccion entrega:*/
+.info-entrega {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bloque {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.bloque h1{
+    margin: 0 auto;
+}
+
+.bloque:first-child {
+    flex-direction: row;
+}
+
+.bloque:last-child {
+    flex-direction: row-reverse;
+}
+
+@media (max-width: 768px) {
+    .bloque img {
+        width: 50%;
+    }
+}
+
+/*Video*/
+.video-container {
+    width: 100%;
+}
+
+.video-container video {
+    width: 80%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Productos */
+.productos h1{
+    margin: 15px 0px;
+    text-align: center;
+    font-size: 30px;
+    color: orangered;
+}
+
+.contenedor-flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 3lvh;
+}
+
+.item{
+    text-align: center;
+}
+
+.item a{
+    display: block;
+    margin-top: 10px;
+    color: blue;
+}
+
+@media (max-width: 768px) {
+    .item {
+        width: 50%;
+    }
+}
+
+@media (max-width: 480px) {
+    .item {
+        width: 100%;
+    }
+}
+
+.item a {
+    margin: 10px auto;
+    color: blue;
+}
+
+/*Reseña*/
+.reseñas {
+    text-align: center;
+    padding: 50px;
+}
+
+.reseñas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.reseña {
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: left;
+}
+
+.reseña i {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.nombre-usuario {
+    font-weight: bold;
+}
+
+/*Contacto*/
+.contacto {
+    width: 50%;
+    margin: 0 auto; /* Centra la seccion horizontalmente */
+    background: linear-gradient(70deg, aliceblue, rgba(255, 0, 0, 0.147));
+    border: 1px solid black;
+    margin-bottom: 20px;
+}
+
+.contacto h1 {
+    text-align: center;
+}
+
+.contenedor-contacto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+}
+
+.contenedor-contacto label {
+    padding-bottom: 10px;
+    font-size: 120%;
+}
+
+.contenedor-contacto button:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .contacto {
+        width: 95%;
+    }
+    .contenedor-contacto {
+        padding: 10px;
+    }
+}
+
+/*Footer*/
+footer {
+    background-color: aliceblue;
+    padding: 40px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.menu {
+    flex: 1;
+    text-align: left;
+}
+
+.menu h1 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-direction: column; 
+    gap: 10px; 
+}
+
+.menu li {
+    margin-bottom: 10px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #000;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: red;
+}
+
+.about {
+    flex: 2;
+    text-align: center;
+}
+
+.about h1 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.about p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.logo {
+    flex: 1;
+    text-align: right;
+}
+
+.logo img {
+    height: 70px;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .menu, .about, .logo {
+        margin-bottom: 20px;
+    }
+
+    .logo img {
+        height: 50px;
+    }
+}

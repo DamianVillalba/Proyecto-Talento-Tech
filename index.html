@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/img/logoTienda.png">
+    <link rel="stylesheet" href="/style/estilo.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <title>Mark-here</title>
+</head>
+<body>
+    <header>
+        <div class="logo-header">
+            <img src="/img/logoTienda.png" alt="Imagen Proyecto Logo" height="35px">
+        </div>
+        <nav class="menu-header">
+            <ul>
+                <li><a href="/index.html">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#resenias">Reseñas</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="info-entrega">
+            <div class="bloque">
+                <h1>Bienvenida a nuestra tienda para satisfacerte</h1>
+                <img src="/img/imagen proyecto.png" alt="Imagen Proyecto">
+            </div>
+            <div class="bloque">
+                <div class="video-container">
+                    <video autoplay loop muted playsinline translate="yes">
+                    <source src="/img/video_pagina.mp4" type="video/mp4">
+                </video>
+                </div>
+                <h1>Un solo click y recibe el producto en tu casa</h1>
+            </div>
+        </section>
+        <section id="productos" class="productos">
+            <h1>Mira nuestros termos</h1>
+            <div class="contenedor-flex">
+                <div class="item">
+                    <h2>Producto 1</h2>
+                    <img src="/img/termo 1.webp" alt="Producto 1">
+                    <a href="https://www.mercadolibre.com.ar/termo-south-port-pico-cebador-1-litro-acero-inoxidable/p/MLA21413230#polycard_client=search-nordic&wid=MLA1418126260&sid=search&searchVariation=MLA21413230&position=8&search_layout=grid&type=product&tracking_id=0722ff86-121d-4437-959a-b02f6955d43a">Ver producto</a>
+                </div>
+                <div class="item">
+                    <h2>Producto 2</h2>
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_735339-MLA80067781469_102024-O.webp" alt="Producto 2">
+                    <a href="https://articulo.mercadolibre.com.ar/MLA-1868166602-termo-south-port-pico-cebador-acero-inoxidable-capacidad-1l-_JM#reco_item_pos=1&reco_backend=same-seller-odin&reco_backend_type=low_level&reco_client=pdp-seller_items-above&reco_id=781420bf-2a21-4c9d-82c6-d2736985ccf0&reco_model=machinalis-sellers-baseline">Ver producto</a>
+                </div>
+                <div class="item">
+                    <h2>Producto 3</h2>
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_906248-MLU75357217193_032024-O.webp" alt="Producto 3">
+                    <a href="https://www.mercadolibre.com.ar/termo-termico-south-port-para-frio-calor-manija-tapa-clip-color-negro/p/MLA23416097?pdp_filters=official_store:945#reco_item_pos=1&reco_backend=same-seller-odin&reco_backend_type=low_level&reco_client=vip-seller_items-above&reco_id=afaf2b85-bada-4dbe-8fcc-5ace8140c6f7&reco_model=machinalis-sellers-baseline">Ver producto</a>
+                </div>
+                <div class="item">
+                    <h2>Producto 4</h2>
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_849139-MLU74859023916_032024-O.webp" alt="Producto 4">
+                    <a href="https://www.mercadolibre.com.ar/termo-alimentos-vianda-ccuchara-acero-inox-doble-capa-800ml-color-rosa/p/MLA29602527#reco_backend=comparator-default-odin&reco_client=pdp_comparator&reco_product_pos=2&reco_backend_type=low_level&reco_id=d7b6b4d3-e1eb-4f18-a04d-3b9b6a338cea">Ver producto</a>
+                </div>
+            </div>
+        </section>
+        <section id="resenias" class="reseñas">
+            <h2>Reseñas de nuestros clientes</h2>
+            <div class="reseñas-grid">
+                <div class="reseña">
+                    <i class="fas fa-user"></i>
+                    <p>¡Estoy encantada con mi compra! La página web es muy segura y fácil de usar.</p>
+                    <span class="nombre-usuario">María López</span>
+                </div>
+                <div class="reseña">
+                    <i class="fas fa-user"></i>
+                    <p>Recomiendo esta tienda al 100%. Realicé mi compra sin ningún problema y el producto llegó en perfecto estado.</p>
+                    <span class="nombre-usuario">Pedro García</span>
+                </div>
+                <div class="reseña">
+                    <i class="fas fa-user"></i>
+                    <p>La experiencia de compra fue excelente. La página es muy confiable y el envío super rápido.</p>
+                    <span class="nombre-usuario">Ana Fernández</span>
+                </div>
+            </div>
+        </section>
+        <section id="contacto" class="contacto">
+            <h1>Contacto</h1>
+            <form class="contenedor-contacto" action="https://formspree.io/f/xyzykkgk" method="POST">
+                <label>Nombre y apellido:
+                    <input type="text" name="nombreApellido">
+                </label>
+                <label>Correo electrónico:
+                    <input type="email" name="email" required>
+                </label>
+                <label>Tu mensaje:
+                    <textarea name="message"></textarea>
+                    <button type="submit">Enviar</button>
+                </label>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <nav class="menu">
+                <h1>Menú</h1>
+                <ul>
+                    <li><a href="/index.html">Inicio</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#resenias">Reseñas</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="about">
+                <h1>Acerca de Nosotros</h1>
+                <p>Somos una tienda dedicada a ofrecerte productos de alta calidad. Nos preocupamos por la satisfacción de nuestros clientes y por brindar una experiencia de compra segura y confiable.</p>
+            </div>
+            <div class="logo">
+                <img src="/img/logoTienda.png" alt="Imagen Proyecto Logo" height="35px">
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
