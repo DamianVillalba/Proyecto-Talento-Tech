@@ -40,7 +40,7 @@ header {
 }
 
 .menu-header a:hover{
-    color: red;
+    color: rgb(243, 76, 76);
 }
 
 /*Seccion entrega:*/
@@ -92,7 +92,7 @@ header {
     margin: 15px 0px;
     text-align: center;
     font-size: 30px;
-    color: orangered;
+    color: rgba(37, 26, 247, 0.769);
 }
 
 .contenedor-flex{
@@ -104,35 +104,62 @@ header {
 
 .item{
     text-align: center;
+    margin: 2px;
+    width: calc(25% - 4px);
 }
 
-.item a{
+.item button{
     display: block;
-    margin-top: 10px;
-    color: blue;
+    margin: 10px auto;
+}
+
+.item img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
 }
 
 @media (max-width: 768px) {
     .item {
-        width: 50%;
+        width: calc(50% - 4px);
+        margin: 2px;
     }
 }
 
 @media (max-width: 480px) {
     .item {
-        width: 100%;
+        width: calc(100% - 4px);
+        margin: 2px;
     }
 }
 
-.item a {
-    margin: 10px auto;
-    color: blue;
+#verMas{
+    display: block;
+    margin: 10px auto 0px;
+}
+
+/* Productos con ver mas */
+.contenedor-flex.verMas .item {
+    width: calc(33.33% - 4px);
+}
+
+@media (max-width: 768px) {
+    .contenedor-flex.verMas .item {
+        width: calc(50% - 4px);
+    }
+}
+
+@media (max-width: 480px) {
+    .contenedor-flex.verMas .item {
+        width: calc(100% - 4px);
+    }
 }
 
 /*Reseña*/
 .reseñas {
     text-align: center;
-    padding: 50px;
+    padding: 40px;
 }
 
 .reseñas-grid {
