@@ -131,7 +131,7 @@ header {
 .item button{
     display: block;
     margin: 7px auto;
-    padding: 10px 20px;
+    padding: 8px 10px;
     background-color: #248af7;
     color: #fff;
     border: none;
@@ -167,6 +167,16 @@ header {
 #verMas{
     display: block;
     margin: 10px auto 0px;
+    padding: 10px 20px;
+    background-color: #fe2d2d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#verMas:hover {
+    background-color: #c42828;
 }
 
 /* Productos con ver mas */
