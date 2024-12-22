@@ -34,20 +34,28 @@ document.addEventListener("DOMContentLoaded", () => {
 //PRODUCTOS
 //creo los productos en json y los guardo en la lista para retornarla
 function listaProductos() {
-    const productos = [];
-    for (let i = 5; i <= 6; i++) {
-        const producto = {
-        id: i,
-        nombre: "Producto " + i,
-        precio: Math.round(Math.random() * 55000),
-        imagen: "/img/termo " + i + ".webp",
+    const productos = [
+      {
+        id: 5,
+        nombre: "Termo Termolar R-evolution",
+        precio: "$64.792",
+        imagen: "/img/termo " + 5 + ".webp",
         descripcion_corta:
-            "Termo de acero inoxidable de 1 litro, ideal para mantener tus bebidas a la temperatura ideal por más tiempo. Diseño elegante y duradero. Perfecto para llevar a cualquier lugar",
+            "Los termos Termolar son creados bajo el concepto de calidad e innovación, buscando atender a las más diversas necesidades. Acompañan la vida de las personas, su rutina, sumándole un plus de calidad a sus actividades diarias.",
         descripcion_larga:
-            "Nuestro termo de acero inoxidable de 1 litro es el compañero perfecto para tu día a día. Fabricado con materiales de alta calidad, este termo cuenta con una doble pared de acero inoxidable que proporciona un aislamiento superior, manteniendo tus bebidas calientes por hasta 24 horas y frías por hasta 24 horas. Su diseño elegante y moderno lo hace ideal para cualquier ocasión, ya sea en la oficina, en el gimnasio o durante una aventura al aire libre. Además, su tamaño compacto y ligero lo hacen fácil de transportar.",
-        };
-        productos.push(producto);
-    }
+            "R-Evolution es un termo 100% acero inoxidable, irrompible y de gran resistencia. Su estilo compacto y versátil es ideal para su uso en varios entornos.Con la calidad de los productos Termolar, presenta una conservación térmica diferenciada, que garantizará líquidos calientes o fríos por mucho más tiempo.",
+        },
+        {
+          id: 6,
+          nombre: "Termo Stanley Classic",
+          precio: "$125.998",
+          imagen: "/img/termo " + 6 + ".webp",
+          descripcion_corta:
+              "El termo Stanley destaca por su diseño elegante y durabilidad, manteniendo las bebidas calientes por 40 horas y frías por 45. Su robustez garantiza un rendimiento térmico prolongado",
+          descripcion_larga:
+              "La palabra que viene a la mente es icónico: diseño elegante, construcción robusta y una actitud indescriptible. Totalmente a prueba de fugas y capaz de mantener las bebidas calientes durante 40 horas, frías durante 45 horas o con hielo durante 6 días. Con el termo Stanley nunca tendrás que preocuparte de que el agua se enfríe o que tu bebida se caliente. Gracias a su pared externa de acero grueso obtendrás un rendimiento térmico que te durará a través de los años.",
+        }
+    ];
     return productos;
 }
 
@@ -62,13 +70,21 @@ const mostrarListadoProductos = () => {
   const items = contenedor.querySelectorAll(".item");
 
   items.forEach((item) => {
+      const id = item.querySelector("button").id;
       const producto = {
-          id: item.querySelector("button").id,
+          id: id,
           nombre: item.querySelector("h2").textContent,
-          imagen: item.querySelector("img").src
+          imagen: item.querySelector("img").src,
+          descripcion_corta: item.querySelector("p").textContent,
+          descripcion_larga: document.querySelector(`#descripcion-larga-${id}`).textContent
       };
 
       console.log(producto);
+
+      // Agregar evento de clic al botón para cambiar la descripción
+      item.querySelector("button").addEventListener("click", () => {
+        item.querySelector("p").textContent = producto.descripcion_larga;
+      });
   });
 };
 
@@ -90,12 +106,26 @@ function generarProductosNuevos(){
           imagen.src = producto.imagen;
           imagen.alt = producto.nombre;
 
+          const descripcionCorta = document.createElement("p");
+          descripcionCorta.textContent = producto.descripcion_corta;
+  
+          const descripcionLarga = document.createElement("p");
+          descripcionLarga.id = `descripcion-larga-${producto.id}`;
+          descripcionLarga.style.display = "none";
+          descripcionLarga.textContent = producto.descripcion_larga;
+  
+          const precio = document.createElement("h3");
+          precio.textContent = producto.precio;
+  
           const boton = document.createElement("button");
-          boton.textContent = "Ver descripcion";
+          boton.textContent = "Ver descripcion completa";
           boton.id = producto.id;
-
+  
           item.appendChild(titulo);
           item.appendChild(imagen);
+          item.appendChild(descripcionCorta);
+          item.appendChild(descripcionLarga);
+          item.appendChild(precio);
           item.appendChild(boton);
 
           contenedor.appendChild(item);
@@ -105,6 +135,11 @@ function generarProductosNuevos(){
 
           //borro el boton para que no generen de nuevo
           verMas.remove();
+
+          // Agregar evento de clic al botón para cambiar la descripción
+          boton.addEventListener("click", () => {
+            descripcionCorta.textContent = producto.descripcion_larga;
+          });
       });
   });
 }

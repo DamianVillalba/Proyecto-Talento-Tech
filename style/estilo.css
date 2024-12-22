@@ -103,14 +103,44 @@ header {
 }
 
 .item{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     text-align: center;
     margin: 2px;
     width: calc(25% - 4px);
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px; 
+}
+
+.item h2 {
+    margin: 10px auto;
+}
+
+.item p {
+    margin: 5px 10px 0px; 
+    text-align: center;
+}
+
+.item h3 {
+    margin: 5px 0px 0px;
+    color: rgb(12, 164, 12);
 }
 
 .item button{
     display: block;
-    margin: 10px auto;
+    margin: 7px auto;
+    padding: 10px 20px;
+    background-color: #248af7;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.item button:hover {
+    background-color: #0056b3;
 }
 
 .item img {
