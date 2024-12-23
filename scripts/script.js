@@ -189,3 +189,9 @@ function actualizarContador(){
 window.addEventListener("beforeunload",()=>{
   localStorage.setItem("carrito",JSON.stringify(carrito))
 });
+
+// Función para alternar el menú en pantallas pequeñas
+function toggleMenu() {
+  const menuHeader = document.querySelector('.menu-header');
+  menuHeader.classList.toggle('active');
+}
