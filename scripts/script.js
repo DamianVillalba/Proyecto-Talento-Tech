@@ -29,6 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //mostrar productos agregados
   mostrarListadoProductos();
+
+  // carga el contador del carrito al cargar la página
+  actualizarContador();
 });
 
 //PRODUCTOS
@@ -38,7 +41,7 @@ function listaProductos() {
       {
         id: 5,
         nombre: "Termo Termolar R-evolution",
-        precio: "$64.792",
+        precio: 64792,
         imagen: "/img/termo " + 5 + ".webp",
         descripcion_corta:
             "Los termos Termolar son creados bajo el concepto de calidad e innovación, buscando atender a las más diversas necesidades. Acompañan la vida de las personas, su rutina, sumándole un plus de calidad a sus actividades diarias.",
@@ -48,7 +51,7 @@ function listaProductos() {
         {
           id: 6,
           nombre: "Termo Stanley Classic",
-          precio: "$125.998",
+          precio: 125998,
           imagen: "/img/termo " + 6 + ".webp",
           descripcion_corta:
               "El termo Stanley destaca por su diseño elegante y durabilidad, manteniendo las bebidas calientes por 40 horas y frías por 45. Su robustez garantiza un rendimiento térmico prolongado",
@@ -65,7 +68,7 @@ listaProductos().forEach((producto) => {
 });
 
 // MOSTRAR LISTADO PRODUCTOS YA CREADOS
-const mostrarListadoProductos = () => {
+function mostrarListadoProductos() {
   const contenedor = document.querySelector(".contenedor-flex");
   const items = contenedor.querySelectorAll(".item");
 
@@ -76,13 +79,14 @@ const mostrarListadoProductos = () => {
           nombre: item.querySelector("h2").textContent,
           imagen: item.querySelector("img").src,
           descripcion_corta: item.querySelector("p").textContent,
-          descripcion_larga: document.querySelector(`#descripcion-larga-${id}`).textContent
+          descripcion_larga: item.querySelector(`#descripcion-larga-${id}`).textContent,
+          precio: item.querySelector(".precio").textContent
       };
 
       console.log(producto);
 
       // Agregar evento de clic al botón para cambiar la descripción
-      item.querySelector("button").addEventListener("click", () => {
+      item.querySelector(".ver-descripcion").addEventListener("click", () => {
         item.querySelector("p").textContent = producto.descripcion_larga;
       });
   });
@@ -94,7 +98,7 @@ function generarProductosNuevos(){
     verMas.addEventListener('click', () => {
       const contenedor = document.querySelector(".contenedor-flex");
 
-      //itero cada producto y creo un item para cada uno.
+      //itero cada producto y creo un "item" para cada uno.
       listaProductos().forEach((producto) => {
           const item = document.createElement("div");
           item.classList.add("item");
@@ -115,19 +119,35 @@ function generarProductosNuevos(){
           descripcionLarga.textContent = producto.descripcion_larga;
   
           const precio = document.createElement("h3");
-          precio.textContent = producto.precio;
+          precio.className = "precio";
+          precio.textContent = `$${producto.precio}`;
+
+          const divBotones = document.createElement("div");
+          divBotones.className = "productos-botones";
   
-          const boton = document.createElement("button");
-          boton.textContent = "Ver descripcion completa";
-          boton.id = producto.id;
-  
+          const descripcionB = document.createElement("button");
+          descripcionB.textContent = "Ver descripcion completa";
+          descripcionB.id = producto.id;
+          descripcionB.className = "ver-descripcion";
+
+          const carritoB = document.createElement("button");
+          carritoB.textContent = "Agregar al carrito";
+          carritoB.className = "agregar-carrito"
+          carritoB.onclick = () => agregarAlCarrito(producto.nombre,producto.precio,producto.imagen) //agrego funcionalidad boton carrito
+
+          //agrego los elementos al producto
           item.appendChild(titulo);
           item.appendChild(imagen);
           item.appendChild(descripcionCorta);
           item.appendChild(descripcionLarga);
           item.appendChild(precio);
-          item.appendChild(boton);
 
+          //agrego el div de botones al producto junto sus botones
+          item.appendChild(divBotones);
+          divBotones.appendChild(descripcionB);
+          divBotones.appendChild(carritoB);
+
+          //agrego el producto al contenedor de los productos
           contenedor.appendChild(item);
 
           // Cambia la clase del contenedor para ajustar el diseño
@@ -137,11 +157,35 @@ function generarProductosNuevos(){
           verMas.remove();
 
           // Agregar evento de clic al botón para cambiar la descripción
-          boton.addEventListener("click", () => {
+          descripcionB.addEventListener("click", () => {
             descripcionCorta.textContent = producto.descripcion_larga;
           });
       });
   });
 }
 
+//CARRITO
+// Recupera el carrito del localStorage o inicializa uno vacío
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
+function agregarAlCarrito(nombre,precio,imagen){
+    const productoExistente = carrito.find(producto => producto.nombre === nombre);
+    if (productoExistente) {
+        productoExistente.cantidad += 1;
+    } else {
+        carrito.push({ nombre, precio, imagen, cantidad: 1 });
+    }
+    actualizarContador()
+    alert(`Agregaste: ${nombre} al carrito`)
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+}
+
+//actualizar el contador del carrito
+function actualizarContador(){
+  document.getElementById("contador-carrito").textContent = carrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+}
+
+// Guarda el contenido del carrito antes de que la página se recargue o se cierre
+window.addEventListener("beforeunload",()=>{
+  localStorage.setItem("carrito",JSON.stringify(carrito))
+});
