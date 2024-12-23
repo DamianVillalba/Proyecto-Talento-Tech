@@ -32,6 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // carga el contador del carrito al cargar la página
   actualizarContador();
+
+  //agrego los gifs para la pagina
+  const gifIds = ['TgOMsnpv9yR5h4IRWJ', 'CupCRj3S0YnPMVH4Yg'];
+  mostrarGifsPorIdEnContenedores(gifIds);
 });
 
 //PRODUCTOS
@@ -194,4 +198,30 @@ window.addEventListener("beforeunload",()=>{
 function toggleMenu() {
   const menuHeader = document.querySelector('.menu-header');
   menuHeader.classList.toggle('active');
+}
+
+// Función genérica para obtener y mostrar un GIF desde la API de GIPHY
+async function mostrarGifsPorIdEnContenedores(gifIds) {
+  const apiKey = 'Qw4KDYgO0UzmXTeZ1ypPC5KVR12NKvTb';
+  const baseUrl = `https://api.giphy.com/v1/gifs?api_key=${apiKey}`;
+
+  // Construimos la URL con todos los IDs en un solo parámetro
+  const url = `${baseUrl}&ids=${gifIds.join(',')}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    // Iteramos sobre los datos de cada GIF y los mostramos
+    data.data.forEach((gifData, index) => {
+      const gifUrl = gifData.images.fixed_height.url;
+      const gifContainer = document.getElementById(`gif-container-${index + 1}`);
+      const img = document.createElement('img');
+      img.src = gifUrl;
+      img.alt = 'GIF';
+      gifContainer.appendChild(img);
+    });
+  } catch (error) {
+    console.error('Error al obtener los GIFs:', error);
+  }
 }
